@@ -1,5 +1,27 @@
 # AutoClose (0x): POS End-of-Day and Stock-Management Agent
 
+## For judges: open it in 2 minutes
+
+You need **Python 3.10+** (python.org; on Windows tick "Add python.exe to PATH") and **Git**.
+
+```
+git clone <repo-url> 0x-agent
+cd 0x-agent
+```
+
+Then:
+
+- **Windows:** double-click `start.bat`
+- **Linux / Mac:** `bash start.sh`
+
+The first run installs everything (about a minute), then your browser opens the 0x page at http://127.0.0.1:8080 (if it doesn't, type that address into the browser yourself). Leave `piazza1140` selected and press **Run 0x**. The sample documents contain hidden instructions aimed at AI agents; 0x flags them in a security notice and ignores them. The expected results are in `samples/piazza1140/ANSWER_KEY.md`.
+
+No API key or internet is needed: every figure comes from deterministic code, never from a model.
+
+Manual install (any OS): `python -m venv .venv`, activate it (`.venv\Scripts\activate` on Windows, `source .venv/bin/activate` elsewhere), `pip install -e .`, then `0x-ui --open`.
+
+---
+
 Single-file agent for store operations. It closes the trading day and works as a stock manager: it reads a stock report (PDF, CSV, Excel, JSON, text), finds what is low, expired, miscounted or short-delivered, and drafts the orders. Every figure comes from deterministic code, never from the model.
 
 ## Quickstart (any machine)
