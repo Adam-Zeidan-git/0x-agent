@@ -4221,6 +4221,11 @@ def stock_cli(args: argparse.Namespace) -> int:
 
 
 def main(argv: list[str] | None = None) -> int:
+    for _stream in (sys.stdout, sys.stderr):  # Windows consoles default to cp1252, which cannot print the arrows and dashes in reports
+        try:
+            _stream.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, ValueError):
+            pass
     load_dotenv()
     parser = argparse.ArgumentParser(
         prog="0x",

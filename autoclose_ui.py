@@ -1,6 +1,6 @@
 """0x web interface: a small local web page on top of the 0x stock and closing engine.
 
-Run it with:   0x-ui          (then open http://127.0.0.1:8080)
+Run it with:   python -m autoclose_ui --open     (or: 0x-ui --open)   then open http://127.0.0.1:8080
 
 It calls the same code as `0x --stock-file ...`, so the figures are identical to the command line.
 It only listens on this computer (127.0.0.1), runs read-only tools, and never changes your files:

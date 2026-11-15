@@ -5,7 +5,7 @@
 You need **Python 3.10+** (python.org; on Windows tick "Add python.exe to PATH") and **Git**.
 
 ```
-git clone <repo-url> 0x-agent
+git clone https://github.com/Adam-Zeidan-git/0x-agent.git 0x-agent
 cd 0x-agent
 ```
 
@@ -18,7 +18,7 @@ The first run installs everything (about a minute), then your browser opens the 
 
 No API key or internet is needed: every figure comes from deterministic code, never from a model.
 
-Manual install (any OS): `python -m venv .venv`, activate it (`.venv\Scripts\activate` on Windows, `source .venv/bin/activate` elsewhere), `pip install -e .`, then `0x-ui --open`.
+Manual install (any OS): `python -m venv .venv`, activate it (`.venv\Scripts\activate` on Windows, `source .venv/bin/activate` elsewhere), `pip install -e .`, then `python -m autoclose_ui --open`.
 
 ---
 
@@ -27,7 +27,7 @@ Single-file agent for store operations. It closes the trading day and works as a
 ## Quickstart (any machine)
 
 ```bash
-git clone <repo-url> 0x-agent && cd 0x-agent
+git clone https://github.com/Adam-Zeidan-git/0x-agent.git 0x-agent && cd 0x-agent
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e ".[test]"
 chmod +x *.sh

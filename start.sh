@@ -6,4 +6,4 @@ PY=$(command -v python3 || command -v python) || { echo "Python 3.10+ is require
 [ -d .venv ] || { echo "First run: installing (about a minute)..."; "$PY" -m venv .venv; }
 . .venv/bin/activate
 python -c "import autoclose_ui" 2>/dev/null || pip install -q -e .
-exec 0x-ui --open "$@"
+exec python -m autoclose_ui --open "$@"
