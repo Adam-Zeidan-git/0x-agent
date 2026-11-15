@@ -4264,6 +4264,8 @@ def main(argv: list[str] | None = None) -> int:
     stock = parser.add_argument_group("stock management")
     stock.add_argument("--stock-file", metavar="FILE",
                        help="Review a stock document (PDF, CSV, XLSX, JSON, TXT) and print the report")
+    stock.add_argument("--case", metavar="FOLDER",
+                       help="Run on a case folder: uses the *stock* file and the *closing* pack inside it (works on every OS)")
     stock.add_argument("--closing-file", metavar="FILE",
                        help="End-of-day closing pack PDF (sales, staff, tips, monthly history, recipes): tips, restock forecast, trend")
     stock.add_argument("--stock-tool", default=None, metavar="TOOL",
@@ -4282,6 +4284,20 @@ def main(argv: list[str] | None = None) -> int:
         for name, desc in STOCK_TOOL_DESCRIPTIONS.items():
             print(f"{name:26s} {desc}")
         return 0
+
+    if args.case:
+        folder = Path(os.path.expanduser(args.case))
+        if not folder.is_dir():
+            print(f"Not a folder: {folder}", file=sys.stderr)
+            return 2
+        found = lambda pats: next((p for pat in pats for p in sorted(folder.glob(pat))), None)
+        stock_f = found(["*stock*.pdf", "*stock*.csv", "*stock*.xlsx", "*stock*.json", "*stock*.txt"])
+        pack_f = found(["*closing*.pdf"])
+        if not stock_f and not pack_f:
+            print(f"No *stock* or *closing* file found in {folder}", file=sys.stderr)
+            return 2
+        args.stock_file = args.stock_file or (str(stock_f) if stock_f else None)
+        args.closing_file = args.closing_file or (str(pack_f) if pack_f else None)
 
     if args.stock_file or args.closing_file:
         return stock_cli(args)

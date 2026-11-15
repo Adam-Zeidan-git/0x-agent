@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-test = ["pytest", "reportlab"]
+test = ["pytest", "reportlab", "httpx"]
 ocr = ["pytesseract", "pdf2image"]
 
 [project.scripts]

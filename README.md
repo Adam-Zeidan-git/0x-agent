@@ -2,7 +2,7 @@
 
 ## For judges: open it in 2 minutes
 
-You need **Python 3.10+** (python.org; on Windows tick "Add python.exe to PATH") and **Git**.
+You need **Python 3.10 to 3.13** (python.org; on Windows tick "Add python.exe to PATH") and **Git**. Works on Windows, Linux and Mac; the tests run on all three in GitHub Actions.
 
 ```
 git clone https://github.com/Adam-Zeidan-git/0x-agent.git 0x-agent
@@ -18,13 +18,15 @@ The first run installs everything (about a minute), then your browser opens the 
 
 No API key or internet is needed: every figure comes from deterministic code, never from a model.
 
+If Windows shows a blue "Windows protected your PC" box, click **More info**, then **Run anyway**. If `start.bat` says Python was not found, install Python from python.org, tick "Add python.exe to PATH", and run it again.
+
 Manual install (any OS): `python -m venv .venv`, activate it (`.venv\Scripts\activate` on Windows, `source .venv/bin/activate` elsewhere), `pip install -e .`, then `python -m autoclose_ui --open`.
 
 ---
 
 Single-file agent for store operations. It closes the trading day and works as a stock manager: it reads a stock report (PDF, CSV, Excel, JSON, text), finds what is low, expired, miscounted or short-delivered, and drafts the orders. Every figure comes from deterministic code, never from the model.
 
-## Quickstart (any machine)
+## Quickstart for developers (Linux / Mac; Windows steps are above)
 
 ```bash
 git clone https://github.com/Adam-Zeidan-git/0x-agent.git 0x-agent && cd 0x-agent
@@ -51,6 +53,16 @@ samples/mycase/
   stock.pdf            # or .csv / .xlsx
   closing_pack.pdf     # optional
 ```
+
+Windows (PowerShell or Command Prompt):
+
+```bat
+demo.bat                                   :: full review of the Piazza 1140 sample case
+run_case.bat samples\mycase                :: your own case folder
+0x --case samples\mycase --full --no-nim   :: same thing, any OS
+```
+
+On Linux and Mac the same works with `./demo.sh`, `./run_case.sh samples/mycase` or `0x --case samples/mycase`.
 
 ```bash
 ./run_case.sh samples/mycase
