@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.env
+agent_audit.log
+data/
+samples/*/.out/
+*.pyc

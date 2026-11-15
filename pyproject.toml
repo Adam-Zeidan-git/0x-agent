@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "autoclose"
+version = "0.2.0"
+description = "AutoClose (0x) — POS end-of-day and stock-management agent"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi",
+    "pydantic",
+    "uvicorn[standard]",
+    "pypdf",
+    "pdfplumber",
+    "openpyxl",
+]
+
+[project.optional-dependencies]
+test = ["pytest", "reportlab"]
+ocr = ["pytesseract", "pdf2image"]
+
+[project.scripts]
+0x = "autoclose:main"
+0x-ui = "autoclose_ui:main"
+
+[tool.setuptools]
+py-modules = ["autoclose", "autoclose_ui"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
